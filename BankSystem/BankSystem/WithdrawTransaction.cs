@@ -8,9 +8,9 @@ namespace BankApp
     {
         private Account _account;
         private decimal _amount;
-        private bool _executed;
-        private bool _success;
-        private bool _reversed;
+        private bool _executed = false;
+        private bool _success = false;
+        private bool _reversed = false;
 
 
         public WithdrawTransaction(Account account, decimal amount)
@@ -35,19 +35,43 @@ namespace BankApp
 
         public void Execute()
         {
-            try
+            if (_executed == false)
             {
+                if (_account.Withdraw(_amount) == true)
+                {
+                    _executed = true;
+                    _success = true;
+                }
+                else if (_account.Withdraw(_amount) == false)
+                {
+                    throw new InvalidOperationException("Transaction fail: Insufficient funds.");
+                }
                 
             }
-            catch
+            else if(_executed == true)
             {
-                throw new InvalidOperationException("");
+                throw new InvalidOperationException("Withdraw has already been executed.");
             }
         }
 
         public void Rollback()
         {
-
+            if(_reversed == false && _executed == true)
+            {
+                _account.Deposit(_amount);
+                _reversed = true;
+            }
+            else if(_reversed == true || _executed == false)
+            {
+                if(_reversed == true)
+                {
+                    throw new InvalidOperationException("The transaction has already been reversed.");
+                }
+                else if (_executed == false)
+                {
+                    throw new InvalidOperationException("The withdraw has not been successfully processed yet.");
+                }   
+            }
         }
 
         public bool Executed
