@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{FEDBCD5A-DC3C-4F1C-A9AF-612347B8D79B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BankSystem/WithdrawTransaction.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BankSystem/BankSystem.cs">
     <Files>
       <File FileName="BankSystem/BankSystem.cs" Line="1" Column="1" />
-      <File FileName="BankSystem/Account.cs" Line="1" Column="1" />
+      <File FileName="BankSystem/Account.cs" />
       <File FileName="BankSystem/WithdrawTransaction.cs" Line="13" Column="39" />
     </Files>
     <Pads>
@@ -10,7 +10,7 @@
         <State name="__root__">
           <Node name="BankSystem" expanded="True">
             <Node name="BankApp" expanded="True">
-              <Node name="WithdrawTransaction.cs" selected="True" />
+              <Node name="BankSystem.cs" selected="True" />
             </Node>
           </Node>
         </State>
